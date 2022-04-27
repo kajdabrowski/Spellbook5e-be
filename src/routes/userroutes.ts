@@ -6,6 +6,7 @@ const userRouter = Router();
 
 userRouter.post("/register", userController.registerUser);
 userRouter.post("/login", userController.loginUser);
-userRouter.get("/", auth, userController.getUser);
+userRouter.get("/", userController.getUser); //Lägg till auth
+userRouter.delete("/remove", auth, userController.removeUser);
 
 export default userRouter;

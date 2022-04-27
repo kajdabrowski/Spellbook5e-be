@@ -1,9 +1,7 @@
 import { RequestHandler } from "express";
-import { User } from "../db/models";
 import { db } from "../db/client";
 import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
-import { UserRecord } from "firebase-admin/lib/auth/user-record";
 import jwt from "jsonwebtoken";
 
 const userRef = db.collection("users");
@@ -56,6 +54,7 @@ export const loginUser: RequestHandler = async (req, res, next) => {
     res.json({ error });
   }
 };
+
 export const getUser: RequestHandler = async (req, res, next) => {
   try {
     const querySnapshot = await db
@@ -66,5 +65,15 @@ export const getUser: RequestHandler = async (req, res, next) => {
     res.json({ users: querySnapshot.data() });
   } catch (error) {
     res.json({ error });
+  }
+};
+
+export const removeUser: RequestHandler = async (req, res, next) => {
+  try {
+    //@ts-ignore
+    await db.collection("users").doc(req.user.email).delete();
+    res.json({ message: "User successfully deleted" });
+  } catch (error) {
+    next(error);
   }
 };
