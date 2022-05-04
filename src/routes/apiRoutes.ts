@@ -4,7 +4,7 @@ import auth from "../middlewares/auth";
 
 const apiRouter = Router()
 
-apiRouter.get("/spells", apiController.getAllSpells) //lägg till auth
+apiRouter.get("/spells", apiController.getAllSpells) //Lägg till auth?
 
 export default apiRouter;
 

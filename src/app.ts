@@ -8,10 +8,10 @@ const app = express();
 
 app.use(express.json());
 app.use(userRouter);
-app.use(apiRouter);
+app.use(apiRouter); //Lägg till auth middleware innan apiRouter
 
 const port = 3000;
 
 app.listen(port, () => {
-  console.log(`Application running on port ${port}.`);
+  console.log(`Spellbook5e running on port ${port}.`);
 });
