@@ -11,4 +11,3 @@ export const getAllSpells: RequestHandler = async(req, res, nest) => {
         message: spells
     })
 }
-
