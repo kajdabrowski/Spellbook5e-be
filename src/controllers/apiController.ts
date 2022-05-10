@@ -55,3 +55,10 @@ export const getWarlockSpells: RequestHandler = async(req, res, next) => {
     console.log(spells);
     return res.json({spells})
 }
+
+export const getSpellsByClass: RequestHandler = async(req, res, next) => {
+    let dnd_class: string = req.params.dnd_class
+    let result: AxiosResponse = await axios.get(`https://api.open5e.com/spells/?slug__in=&slug__iexact=&slug=&name__iexact=&name=&level__iexact=&level=&level__in=&level_int__iexact=&level_int=&level_int__range=&school__iexact=&school=&school__in=&duration__iexact=&duration=&duration__in=&components__iexact=&components=&components__in=&concentration__iexact=&concentration=&concentration__in=&casting_time__iexact=&casting_time=&casting_time__in=&dnd_class__iexact=&dnd_class=&dnd_class__in=&dnd_class__icontains=${dnd_class}&document__slug__iexact=&document__slug=&document__slug__in=`) 
+    let spells: Spell[] = result.data
+    return res.json({spells})
+}
