@@ -4,8 +4,8 @@ import auth from "../middlewares/auth";
 
 const apiRouter = Router()
 
-apiRouter.get("/spells", apiController.getAllSpells) //lägg till auth
-apiRouter.get("/spells:dnd_class", apiController.getSpellsByClass)
+apiRouter.get("/spells", apiController.getAllSpells)
+apiRouter.get("/spells/:dnd_class/:level", apiController.getSpellsByClass)
 apiRouter.get("/bardspells", apiController.getBardSpells)
 apiRouter.get("/druidspells", apiController.getDruidSpells)
 apiRouter.get("/paladinspells", apiController.getPaladinSpells)
