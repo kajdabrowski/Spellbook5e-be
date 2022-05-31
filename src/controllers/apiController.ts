@@ -5,7 +5,6 @@ import axios, { AxiosResponse } from "axios"
 
 export const getAllSpells: RequestHandler = async(req, res, next) => {
     let result: AxiosResponse = await axios.get(`https://api.open5e.com/spells/`)
-    console.log("HÄR KOMMER SPELLS");
     let spells: Spell[] = result.data;    
     return res.status(200).json({
         message: spells//Kan ta bort message och bara returnera spells
